@@ -7,10 +7,10 @@
 </head>
 <body style="background-color: gray; color: white;">
     <h1>Register</h1>
-    <form action="/auth/register" method="post">
-        <input type="text" name="username" required>
-        <input type="email" name="email" required>
-        <input type="password" name="password" required>
+    <form action="/users/" method="post">
+        <input name="username" placeholder="Username">
+        <input name="email" placeholder="Email">
+        <input name="password" placeholder="Password">
         <button type="submit">Register</button>
     </form>
     <p>Already have an account? <a href="/login-page">Login here</a></p>
