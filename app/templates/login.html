@@ -7,9 +7,9 @@
 </head>
 <body style="background-color: gray; color: white;">
     <h1>Login</h1>
-    <form method="post" action="/login-page">
-        <input type="text" name="username" placeholder="Your username" required>
-        <input type="password" name="password" placeholder="Your password" required>
+    <form action="/auth/login" method="post">
+        <input type="text" name="username" required>
+        <input type="password" name="password" required>
         <button type="submit">Login</button>
     </form>
     <p>Don't have an account? <a href="/register-page">Register here</a></p>
