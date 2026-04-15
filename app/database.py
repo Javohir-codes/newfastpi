@@ -7,8 +7,7 @@ engine = create_engine(
     DATABASE_URL,
     connect_args={"check_same_thread": False}
 )
-
-sessionLocal = sessionmaker(
+SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
     bind=engine
@@ -17,7 +16,7 @@ sessionLocal = sessionmaker(
 Base = declarative_base()
 
 def get_db():
-    db = sessionLocal()
+    db = SessionLocal()
     try:
         yield db
     finally:

@@ -1,17 +1,20 @@
-from fastapi import FastAPI, Request
-from app.database import Base, engine
+from fastapi import FastAPI, Request, Depends
+from sqlalchemy.orm import Session
+from app.database import Base, engine, get_db
 from app.routers import user, auth, products
 from fastapi.templating import Jinja2Templates
+from app import models
+
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-products_db = []
 
 templates = Jinja2Templates(directory="app/templates")
 
 app.include_router(user.router)
 app.include_router(auth.router)
+app.include_router(products.router)
 
 @app.get("/")
 def root(request: Request):
@@ -38,11 +41,10 @@ def register_page(request: Request):
     )
 
 @app.get("/")
-def home(request: Request):
-    print(products.products_db)
-    return templates.TemplateResponse("home.html", {
-        "request": request,
-        "products": products.products_db
-    })
+def home(request: Request, db: Session = Depends(get_db)):
+    items = db.query(models.Clothes).all()
 
-app.include_router(products.router)
+    return templates.TemplateResponse("index.html", {
+        "request": request,
+        "products": items
+    })

@@ -49,6 +49,15 @@
             transition: 0.2s;
         }
 
+        .login-btn {
+            padding: 8px 14px;
+            background-color: #a67c52;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
         .register-btn:hover {
             background-color: #8c653f;
         }
@@ -121,21 +130,11 @@
     <div class="products">
         {% for product in products %}
         <div class="product">
-            <img src="{{ product.image }}" alt="">
+            <img src="{{ product.image_url }}" alt="">
             <div class="product-title">{{ product.name }}</div>
             <div class="product-price">{{ product.price }} $</div>
         </div>
         {% endfor %}
-        <!-- <div class="product">
-            <img src="https://via.placeholder.com/200" alt="">
-            <div class="product-title">Кроссовки</div>
-            <div class="product-price">80 $</div>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/200" alt="">
-            <div class="product-title">Куртка</div>
-            <div class="product-price">120 $</div>
-        </div> -->
     </div>
 </div>
 <footer>

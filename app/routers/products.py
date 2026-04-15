@@ -1,19 +1,33 @@
-from fastapi import APIRouter
-from pydantic import BaseModel
+from fastapi import APIRouter, Depends, Request
+from sqlalchemy.orm import Session
+from app.database import SessionLocal, get_db
+from app import models
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
-router = APIRouter()
-products_db = []
+router = APIRouter(prefix="/clothes", tags=["Clothes"])
 
-class Product(BaseModel):
-    name: str
-    price: float
-    image: str
+templates = Jinja2Templates(directory="app/templates")
 
-@router.post("/products")
-def create_product(product: Product):
-    products_db.append(product)
-    return {"message": "Товар добавлен"}
 
-@router.get("/products")
-def get_products():
-    return products_db
+@router.post("/")
+def create_clothes(name: str, price: int, image_url: str, db: Session = Depends(get_db)):
+    item = models.Clothes(
+        name=name,
+        price=price,
+        image_url=image_url
+    )
+    db.add(item)
+    db.commit()
+    db.refresh(item)
+    return item
+
+
+@router.get("/", response_class=HTMLResponse)
+def read_products(request: Request, db: Session = Depends(get_db)):
+    products = db.query(models.Clothes).all()
+    print("PRODUCTS:", products)
+    return templates.TemplateResponse("index.html", {
+        "request": request,
+        "products": products
+    })
