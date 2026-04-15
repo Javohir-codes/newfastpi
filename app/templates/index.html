@@ -119,12 +119,14 @@
 <div class="container">
     <h2>Товары</h2>
     <div class="products">
+        {% for product in products %}
         <div class="product">
-            <img src="https://via.placeholder.com/200" alt="">
-            <div class="product-title">Футболка</div>
-            <div class="product-price">25 $</div>
+            <img src="{{ product.image }}" alt="">
+            <div class="product-title">{{ product.name }}</div>
+            <div class="product-price">{{ product.price }} $</div>
         </div>
-        <div class="product">
+        {% endfor %}
+        <!-- <div class="product">
             <img src="https://via.placeholder.com/200" alt="">
             <div class="product-title">Кроссовки</div>
             <div class="product-price">80 $</div>
@@ -133,7 +135,7 @@
             <img src="https://via.placeholder.com/200" alt="">
             <div class="product-title">Куртка</div>
             <div class="product-price">120 $</div>
-        </div>
+        </div> -->
     </div>
 </div>
 <footer>
