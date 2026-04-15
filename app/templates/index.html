@@ -1,14 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body style="background-color: black; color: white;">
-    <h1>Home Page</h1>
+    <title>Интернет-магазин</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f1e9;
+            color: #333;
+        }
 
-    <a style="color: yellow;" href="/register-page">Register</a>
-    <a style="color: pink;" href="/login-page">Login</a>
+        header {
+            background-color: #fffaf3;
+            padding: 15px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .register-btn {
+            padding: 8px 14px;
+            background-color: #a67c52;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .register-btn:hover {
+            background-color: #8c653f;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product-price {
+            color: #a67c52;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #fffaf3;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <div class="logo">Мой магазин</div>
+        <nav>
+            <a href="#">Главная</a>
+            <a href="#">Товары</a>
+            <a class="register-btn" href="/register-page">Регистрация</a>
+            <a class="login-btn" href="/login-page">Зайти в Аккаунт</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <h2>Товары</h2>
+    <div class="products">
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="">
+            <div class="product-title">Футболка</div>
+            <div class="product-price">25 $</div>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="">
+            <div class="product-title">Кроссовки</div>
+            <div class="product-price">80 $</div>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="">
+            <div class="product-title">Куртка</div>
+            <div class="product-price">120 $</div>
+        </div>
+    </div>
+</div>
+<footer>
+    © 2026 Мой магазин | Все права защищены
+</footer>
 </body>
 </html>
